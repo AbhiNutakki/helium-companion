@@ -1,0 +1,10 @@
+.venv/
+build/
+__pycache__/
+reports/*.log
+reports/*.pid
+worlds/session-*.sdf
+reports/acceptance-*.log
+.DS_Store
+# Generated worlds contain machine-local mesh paths; the launcher regenerates them.
+worlds/companion.sdf

@@ -1,0 +1,152 @@
+{
+  "model_revision": "helium_flapping_v2",
+  "generated_at": "2026-10-29T15:54:54-0400",
+  "engine": "Gazebo Jetty / native articulated joints and rigid-body dynamics",
+  "summary": {
+    "passed": 14,
+    "total": 14
+  },
+  "checks": [
+    {
+      "name": "01_passive_helium_float_without_flapping",
+      "passed": true,
+      "metrics": {
+        "vertical_drift_30s_m": -0.023688769162896417,
+        "settled_wing_force_N": 1.2703502113848327e-24,
+        "buoyancy_N": 0.9343942818297108,
+        "weight_N": 0.9343942818297108
+      },
+      "wall_seconds": 5.39
+    },
+    {
+      "name": "02_gravity_and_envelope_collision",
+      "passed": true,
+      "metrics": {
+        "floor_height_m": 0.1640595123366279
+      },
+      "wall_seconds": 0.9
+    },
+    {
+      "name": "03_passive_trim_error_causes_descent",
+      "passed": true,
+      "metrics": {
+        "downward_trim_g": 1.5,
+        "descent_m": 0.5147186691359948
+      },
+      "wall_seconds": 0.89
+    },
+    {
+      "name": "04_symmetric_wings_propel_forward",
+      "passed": true,
+      "metrics": {
+        "forward_travel_m": 1.8465817578724537,
+        "mean_left_force_N": 0.0032207887880489504,
+        "mean_right_force_N": 0.0032207887880489504,
+        "final_speed_mps": 0.20471094885683966
+      },
+      "wall_seconds": 2.41
+    },
+    {
+      "name": "05_differential_flapping_turns_left",
+      "passed": true,
+      "metrics": {
+        "mean_yaw_rate_rad_s": 0.20033745190525737,
+        "left_hz": 0.8366563145941217,
+        "right_hz": 1.499999999989551
+      },
+      "wall_seconds": 1.22
+    },
+    {
+      "name": "06_differential_flapping_turns_right",
+      "passed": true,
+      "metrics": {
+        "mean_yaw_rate_rad_s": -0.20203950672733287,
+        "left_hz": 1.4999999999929954,
+        "right_hz": 0.8366563145960432
+      },
+      "wall_seconds": 1.24
+    },
+    {
+      "name": "07_internal_mass_physically_pitches_body",
+      "passed": true,
+      "metrics": {
+        "forward_ballast_m": 0.1002301902655515,
+        "nose_down_deg": 12.037615067652489
+      },
+      "wall_seconds": 2.05
+    },
+    {
+      "name": "08_climb_by_flapping_and_pitch",
+      "passed": true,
+      "metrics": {
+        "altitude_change_m": 0.3838535802545233,
+        "nose_up_deg": 12.249133949608796,
+        "ballast_m": -0.0458788044372318
+      },
+      "wall_seconds": 2.72
+    },
+    {
+      "name": "09_descend_by_flapping_and_pitch",
+      "passed": true,
+      "metrics": {
+        "altitude_change_m": -0.23230470723736363,
+        "nose_up_deg": -6.279067844809457,
+        "ballast_m": 0.06980517344152398
+      },
+      "wall_seconds": 2.72
+    },
+    {
+      "name": "10_stop_flapping_and_coast_under_drag",
+      "passed": true,
+      "metrics": {
+        "initial_speed_mps": 0.18935597355804606,
+        "coasted_speed_mps": 0.002910561458942668,
+        "settled_wing_force_N": 9.748670110216615e-19
+      },
+      "wall_seconds": 4.26
+    },
+    {
+      "name": "11_real_wing_joints_and_sweep_limits",
+      "passed": true,
+      "metrics": {
+        "min_angle_deg": -89.99999846477621,
+        "max_angle_deg": 9.331987742663985,
+        "max_command_frequency_hz": 1.499999999999989
+      },
+      "wall_seconds": 1.73
+    },
+    {
+      "name": "12_zero_fin_coefficient_has_no_hidden_thrust",
+      "passed": true,
+      "metrics": {
+        "max_aerodynamic_force_N": 0.0,
+        "hinge_velocity_rad_s": -4.762982045185419
+      },
+      "wall_seconds": 1.75
+    },
+    {
+      "name": "13_manual_input_timeout_stops_flapping",
+      "passed": true,
+      "metrics": {
+        "status": "gliding",
+        "wing_half_amplitude_deg": 2.64622321848101e-07
+      },
+      "wall_seconds": 1.06
+    },
+    {
+      "name": "14_obstacle_guard_stops_wings",
+      "passed": true,
+      "metrics": {
+        "max_y_m": 0.4955519282547698,
+        "final_state": "gliding_obstacle_stop"
+      },
+      "wall_seconds": 3.73
+    }
+  ],
+  "limitations": [
+    "Fin thrust and drag coefficients are assumed, not measured.",
+    "Forward thrust is a rectified membrane approximation driven by measured hinge velocity.",
+    "No propellers, independent vertical force actuator, person, tracking target or camera pipeline.",
+    "Rigid envelope and wings; no aeroelastic CFD, sound or battery validation."
+  ]
+}
