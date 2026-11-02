@@ -1,7 +1,11 @@
-# Flapping Helium Lab
+# Helium Companion — Prototype Development
 
-A Cuddle-Fish-inspired Gazebo robot: **helium buoyancy, two flapping side wings,
-a passive tail and a moving internal ballast**. There are no propellers, vertical
+A Gazebo model and control environment for developing a physical floating
+companion, inspired by Cuddle-Fish: **helium buoyancy, two flapping side wings,
+a passive tail and a moving internal ballast**. Use this environment to iterate
+on the mechanism and control behavior before testing hardware.
+
+There are no propellers, vertical
 thrusters, people, tracking markers, cameras or following modes in this revision.
 
 ## Run

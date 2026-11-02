@@ -1,12 +1,17 @@
-# Flapping Helium Lab
+# Helium Companion
 
-A Gazebo simulation of a helium-supported robot with two articulated flapping
-wings, a passive tail and sliding internal ballast. Includes a browser control
-panel, native C++ physics plugin, model generator and automated tests.
+A floating companion robot project using helium buoyancy, two flapping wings,
+a passive tail and sliding internal ballast.
+
+This repository contains the Gazebo simulation and control software used to
+develop the physical prototype. It provides a way to explore buoyancy, wing
+motion, steering and ballast control before building and tuning the hardware.
+It includes a browser control panel, native C++ physics plugin, model generator
+and automated tests.
 
 Inspired by [Cuddle-Fish](https://kaikunze.de/papers/pdf/xu2025cuddle.pdf).
-This is an independent experimental simulation; aerodynamic coefficients are
-estimated and have not been validated against hardware.
+Aerodynamic coefficients are currently estimated; simulation results have not
+yet been validated against a physical prototype.
 
 ![Simulation dashboard](floating-companion/reports/dashboard.png)
 
