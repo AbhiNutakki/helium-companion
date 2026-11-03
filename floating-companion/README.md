@@ -117,6 +117,29 @@ lump together the body, wings and passive tail and are estimated coefficients.
 
 ## Testing
 
+### Compare prototype settings
+
+```sh
+.venv/bin/python scripts/experiment.py --frequencies .6 1.2 --coefficients 0 1.2 --seconds 6 --repeats 2
+```
+
+This starts its own headless Gazebo session without changing a running dashboard.
+Each case resets the robot and compares symmetric wing frequency and an assumed
+thrust coefficient. Use `--amplitude` to choose wing half-amplitude, `--factor`
+to change simulation speed and `--output` to choose a new results directory.
+The runner refuses to overwrite an existing directory.
+
+Each run saves a `summary.json` with travel, speed, altitude change, mean wing
+force and obstacle-stop status, plus a CSV trajectory for every case. Failed or
+interrupted runs retain completed cases with `complete: false`. Results use
+simulation time, not elapsed wall time. Short runs include startup transients;
+obstacle stops can limit travel, so these are comparisons rather than estimates
+of steady-state speed. The checked-in `reports/experiments/baseline/` illustrates
+four cases, including a zero-thrust control. These results do not calibrate the
+physical wing or validate hardware performance.
+
+### Acceptance checks
+
 ```sh
 .venv/bin/python scripts/test_all.py
 ```

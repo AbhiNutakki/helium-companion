@@ -1,0 +1,73 @@
+{
+  "model_revision": "helium_flapping_v2",
+  "complete": true,
+  "note": "Simulation sensitivity study only; coefficients are assumptions, not hardware measurements.",
+  "configuration": {
+    "frequencies": [
+      0.6,
+      1.2
+    ],
+    "coefficients": [
+      0.0,
+      1.2
+    ],
+    "amplitude": 40,
+    "seconds": 6.0,
+    "repeats": 1,
+    "factor": 6
+  },
+  "cases": [
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.0920000000000005,
+      "forward_travel_m": 0.0020392645524924813,
+      "altitude_change_m": -0.017041705963304343,
+      "mean_speed_mps": 0.005853745511665701,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-001.csv"
+    },
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.122,
+      "forward_travel_m": 0.13212409867468966,
+      "altitude_change_m": -0.011371560369896505,
+      "mean_speed_mps": 0.023074415406474893,
+      "mean_wing_force_N": 0.001097264757256087,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-002.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.0,
+      "forward_travel_m": 0.001959627443469447,
+      "altitude_change_m": -0.02030861520212701,
+      "mean_speed_mps": 0.010881759093990025,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-003.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.083999999999996,
+      "forward_travel_m": 0.5264823001092978,
+      "altitude_change_m": 0.003269549073118272,
+      "mean_speed_mps": 0.08853450406476039,
+      "mean_wing_force_N": 0.004655209092892286,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-004.csv"
+    }
+  ]
+}
