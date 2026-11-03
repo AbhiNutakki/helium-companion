@@ -15,6 +15,6 @@ test_require_command_targets (test_model.ModelTests.test_require_command_targets
 test_wing_controls_are_accepted (test_model.ModelTests.test_wing_controls_are_accepted) ... ok
 
 ----------------------------------------------------------------------
-Ran 15 tests in 0.523s
+Ran 15 tests in 0.529s
 
 OK
