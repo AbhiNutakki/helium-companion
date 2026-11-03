@@ -1,5 +1,6 @@
 """Exercise the real HTTP handler without starting Gazebo."""
 import json, sys, threading, unittest, urllib.error, urllib.request
+from unittest.mock import patch
 from pathlib import Path
 from http.server import ThreadingHTTPServer
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -21,6 +22,7 @@ class HTTPTests(unittest.TestCase):
     def setUpClass(cls):
         cls.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
         cls.server.bridge = FakeBridge()
+        cls.server.partition = 'http_test_partition'
         cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)
         cls.thread.start()
         cls.url = f'http://127.0.0.1:{cls.server.server_port}'
@@ -60,7 +62,14 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(len(self.server.bridge.commands), count)
     def test_state_endpoint(self):
         with urllib.request.urlopen(self.url+'/api/state', timeout=2) as response:
-            self.assertTrue(json.load(response)['connected'])
+            state = json.load(response)
+        self.assertTrue(state['connected'])
+        self.assertEqual(state['session_partition'], 'http_test_partition')
+    def test_delivery_failure_returns_service_unavailable(self):
+        with patch.object(self.server.bridge, 'send', side_effect=ConnectionError('Gazebo disconnected')):
+            status, result = self.request(b'{"action":"reset"}')
+        self.assertEqual(status, 503)
+        self.assertEqual(result, {'error':'Gazebo disconnected'})
 
 if __name__ == '__main__':
     unittest.main()

@@ -31,7 +31,7 @@ physics server with only the browser dashboard.
 
 See the [project documentation](floating-companion/README.md) for controls,
 physics assumptions, limitations and testing instructions. Saved results include
-14 passing Gazebo integration checks and 15 passing unit/HTTP tests.
+14 passing Gazebo integration checks and 23 passing unit/bridge/HTTP tests.
 
 ## Prototype experiments
 

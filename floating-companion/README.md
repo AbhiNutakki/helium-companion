@@ -31,6 +31,10 @@ This uses the existing Homebrew Gazebo Jetty installation and Python 3.14.
 The dashboard binds only to loopback and uses an isolated Gazebo partition.
 The launcher generates world files with mesh paths for the current checkout;
 generated worlds, build products and the virtual environment are excluded from Git.
+Commands are rejected with HTTP 503 when telemetry is stale or command publishing
+fails. A returned command ID means it was published; the dashboard separately
+waits for Gazebo's acknowledgement. After reconnecting to an existing simulator,
+the bridge continues its command counter beyond the last acknowledged ID.
 
 ## What to try
 
@@ -149,6 +153,8 @@ settings, with source provenance and the individual CSV traces.
 This runs structural/API/HTTP unit tests first, then the actual Gazebo acceptance
 suite in a separate partition on an automatically selected loopback port. It
 shuts down its owned processes afterward and stops immediately if unit tests fail.
+Readiness requires the launched session's unique partition, so an unrelated
+dashboard cannot be mistaken for the simulator under test.
 Unit output is saved to `reports/unit-tests.txt`. Acceptance and experiment
 reports record a source fingerprint and Git revision to identify the tested code.
 The suite checks

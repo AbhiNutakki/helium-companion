@@ -33,7 +33,7 @@ def simulation(factor=6):
                         state = json.load(response)
                 except OSError:
                     state = {}
-                if state.get('connected') and state.get('model_revision') == 'helium_flapping_v2':
+                if state.get('connected') and state.get('model_revision') == 'helium_flapping_v2' and state.get('session_partition') == partition:
                     # Do not accept an unrelated server if another process won the port race.
                     time.sleep(.1)
                     if proc.poll() is None:

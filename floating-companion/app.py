@@ -44,7 +44,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status);self.send_header('Content-Type',content);self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data)
     def do_GET(self):
         try:
-            if self.path=='/api/state':self.respond(200,json.dumps(self.server.bridge.snapshot()).encode())
+            if self.path=='/api/state':self.respond(200,json.dumps(dict(self.server.bridge.snapshot(),session_partition=self.server.partition)).encode())
             elif self.path=='/api/report':
                 p=ROOT/'reports/results.json';self.respond(200,p.read_bytes() if p.exists() else b'{}')
             elif self.path in ('/','/index.html'):self.respond(200,(ROOT/'web/index.html').read_bytes(),'text/html; charset=utf-8')
@@ -61,6 +61,7 @@ class Handler(BaseHTTPRequestHandler):
             command=validate(json.loads(self.rfile.read(size)))
             self.respond(200,json.dumps({'id':self.server.bridge.send(command)}).encode())
         except (ValueError,TypeError,OverflowError) as e:self.respond(400,json.dumps({'error':str(e)}).encode())
+        except ConnectionError as e:self.respond(503,json.dumps({'error':str(e)}).encode())
 
 def launch(args):
     if not (ROOT/'build/libCompanion.dylib').exists() and not (ROOT/'build/libCompanion.so').exists():
@@ -72,6 +73,7 @@ def launch(args):
     subprocess.run([sys.executable,str(ROOT/'scripts/generate_world.py'),'--factor',str(args.factor),'--output',str(world)],check=True)
     # Bind first: a port conflict must not leave an orphan Gazebo process.
     http=ThreadingHTTPServer(('127.0.0.1',args.port),Handler)
+    http.partition=args.partition
     logpath=report/f'server-{args.port}.log';log=open(logpath,'w');server_process=None;gui=None
     try:
         server_process=subprocess.Popen(['gz','sim','-r','-s',str(world)],env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
