@@ -1,0 +1,78 @@
+{
+  "model_revision": "helium_flapping_v2",
+  "complete": true,
+  "source": {
+    "source_sha256": "9e8d2f087b4bce848d3faec4094cd23b2dd1ee7ff87cd283263f712194113e54",
+    "git_commit": "e3baab4a0bcfe720e1d7cc4f31db3072f3247cfb",
+    "source_worktree_modified": false
+  },
+  "note": "Simulation sensitivity study only; coefficients are assumptions, not hardware measurements.",
+  "configuration": {
+    "frequencies": [
+      0.6,
+      1.2
+    ],
+    "coefficients": [
+      0.0,
+      1.2
+    ],
+    "amplitude": 40,
+    "seconds": 6.0,
+    "repeats": 1,
+    "factor": 6
+  },
+  "cases": [
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.106,
+      "forward_travel_m": 0.0019004945257161676,
+      "altitude_change_m": -0.017399308461984342,
+      "mean_speed_mps": 0.00575839189644782,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-001.csv"
+    },
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.123999999999999,
+      "forward_travel_m": 0.13332462080587248,
+      "altitude_change_m": -0.011944907321366216,
+      "mean_speed_mps": 0.023175574234316286,
+      "mean_wing_force_N": 0.0011170785678127342,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-002.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.042000000000002,
+      "forward_travel_m": 0.002065143483560572,
+      "altitude_change_m": -0.020897104542860534,
+      "mean_speed_mps": 0.010680349327593727,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-003.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.041999999999998,
+      "forward_travel_m": 0.5207891136084888,
+      "altitude_change_m": 0.0033700138442747107,
+      "mean_speed_mps": 0.08724812311959086,
+      "mean_wing_force_N": 0.00477533247592768,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-004.csv"
+    }
+  ]
+}

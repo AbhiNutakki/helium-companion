@@ -1,5 +1,13 @@
+test_counter_cannot_overflow_simulator_integer (test_bridge.BridgeTests.test_counter_cannot_overflow_simulator_integer) ... ok
+test_initially_disconnected (test_bridge.BridgeTests.test_initially_disconnected) ... ok
+test_invalid_telemetry_does_not_replace_state_or_refresh_connection (test_bridge.BridgeTests.test_invalid_telemetry_does_not_replace_state_or_refresh_connection) ... ok
+test_old_telemetry_does_not_reuse_command_ids (test_bridge.BridgeTests.test_old_telemetry_does_not_reuse_command_ids) ... ok
+test_publish_failure_does_not_return_success (test_bridge.BridgeTests.test_publish_failure_does_not_return_success) ... ok
+test_reconnect_continues_after_simulator_ack (test_bridge.BridgeTests.test_reconnect_continues_after_simulator_ack) ... ok
+test_stale_connection_rejects_commands (test_bridge.BridgeTests.test_stale_connection_rejects_commands) ... ok
 test_accepted_command_reaches_bridge (test_http.HTTPTests.test_accepted_command_reaches_bridge) ... ok
 test_bad_requests_never_reach_bridge (test_http.HTTPTests.test_bad_requests_never_reach_bridge) ... ok
+test_delivery_failure_returns_service_unavailable (test_http.HTTPTests.test_delivery_failure_returns_service_unavailable) ... ok
 test_foreign_origin_rejected (test_http.HTTPTests.test_foreign_origin_rejected) ... ok
 test_state_endpoint (test_http.HTTPTests.test_state_endpoint) ... ok
 test_accept_physical_limit_endpoints (test_model.ModelTests.test_accept_physical_limit_endpoints) ... ok
@@ -15,6 +23,6 @@ test_require_command_targets (test_model.ModelTests.test_require_command_targets
 test_wing_controls_are_accepted (test_model.ModelTests.test_wing_controls_are_accepted) ... ok
 
 ----------------------------------------------------------------------
-Ran 15 tests in 0.529s
+Ran 23 tests in 0.529s
 
 OK

@@ -1,10 +1,10 @@
 {
   "model_revision": "helium_flapping_v2",
-  "generated_at": "2026-11-02T20:55:28-0500",
+  "generated_at": "2026-11-02T20:58:30-0500",
   "engine": "Gazebo Jetty / native articulated joints and rigid-body dynamics",
   "source": {
-    "source_sha256": "41193cbd6e9e70f452cd0cff3638fe56c8c945c14eb70233fc892c347bb34832",
-    "git_commit": "88542540894b72de03595774f5111bbb6fc21a27",
+    "source_sha256": "9e8d2f087b4bce848d3faec4094cd23b2dd1ee7ff87cd283263f712194113e54",
+    "git_commit": "e3baab4a0bcfe720e1d7cc4f31db3072f3247cfb",
     "source_worktree_modified": false
   },
   "summary": {
@@ -16,18 +16,18 @@
       "name": "01_passive_helium_float_without_flapping",
       "passed": true,
       "metrics": {
-        "vertical_drift_30s_m": -0.023864910652172888,
-        "settled_wing_force_N": 1.2782603447025086e-24,
+        "vertical_drift_30s_m": -0.02313384622954029,
+        "settled_wing_force_N": 1.2770035591546027e-24,
         "buoyancy_N": 0.9343942818297108,
         "weight_N": 0.9343942818297108
       },
-      "wall_seconds": 5.36
+      "wall_seconds": 5.38
     },
     {
       "name": "02_gravity_and_envelope_collision",
       "passed": true,
       "metrics": {
-        "floor_height_m": 0.16405957699006093
+        "floor_height_m": 0.16405956491241402
       },
       "wall_seconds": 0.9
     },
@@ -36,18 +36,18 @@
       "passed": true,
       "metrics": {
         "downward_trim_g": 1.5,
-        "descent_m": 0.5065379840741733
+        "descent_m": 0.5336767594544545
       },
-      "wall_seconds": 0.89
+      "wall_seconds": 0.92
     },
     {
       "name": "04_symmetric_wings_propel_forward",
       "passed": true,
       "metrics": {
-        "forward_travel_m": 1.8506886097111495,
-        "mean_left_force_N": 0.003281552227514797,
-        "mean_right_force_N": 0.003281552227514797,
-        "final_speed_mps": 0.20396384422751937
+        "forward_travel_m": 1.8424834115397406,
+        "mean_left_force_N": 0.0033775306856041977,
+        "mean_right_force_N": 0.0033775306856041977,
+        "final_speed_mps": 0.20516139963739047
       },
       "wall_seconds": 2.4
     },
@@ -55,48 +55,48 @@
       "name": "05_differential_flapping_turns_left",
       "passed": true,
       "metrics": {
-        "mean_yaw_rate_rad_s": 0.20087916600463934,
-        "left_hz": 0.8366563145946233,
-        "right_hz": 1.4999999999904503
+        "mean_yaw_rate_rad_s": 0.19894671633363617,
+        "left_hz": 0.8366563145940631,
+        "right_hz": 1.499999999989446
       },
-      "wall_seconds": 1.23
+      "wall_seconds": 1.22
     },
     {
       "name": "06_differential_flapping_turns_right",
       "passed": true,
       "metrics": {
-        "mean_yaw_rate_rad_s": -0.20259881733731708,
-        "left_hz": 1.4999999999924876,
-        "right_hz": 0.83665631459576
+        "mean_yaw_rate_rad_s": -0.2012802012267018,
+        "left_hz": 1.4999999999911844,
+        "right_hz": 0.8366563145950329
       },
-      "wall_seconds": 1.25
+      "wall_seconds": 1.24
     },
     {
       "name": "07_internal_mass_physically_pitches_body",
       "passed": true,
       "metrics": {
-        "forward_ballast_m": 0.10022967098317424,
-        "nose_down_deg": 12.037088385877635
+        "forward_ballast_m": 0.10022968484700925,
+        "nose_down_deg": 12.037077341179492
       },
-      "wall_seconds": 2.09
+      "wall_seconds": 2.07
     },
     {
       "name": "08_climb_by_flapping_and_pitch",
       "passed": true,
       "metrics": {
-        "altitude_change_m": 0.38341468051597793,
-        "nose_up_deg": 12.247757230399976,
-        "ballast_m": -0.04591902761522581
+        "altitude_change_m": 0.3864143590373912,
+        "nose_up_deg": 12.247620740783796,
+        "ballast_m": -0.04553398097660764
       },
-      "wall_seconds": 2.72
+      "wall_seconds": 2.74
     },
     {
       "name": "09_descend_by_flapping_and_pitch",
       "passed": true,
       "metrics": {
-        "altitude_change_m": -0.23158126934045886,
-        "nose_up_deg": -6.27829925264948,
-        "ballast_m": 0.0698518892263457
+        "altitude_change_m": -0.23007598989828537,
+        "nose_up_deg": -6.285244738087287,
+        "ballast_m": 0.06994422140553605
       },
       "wall_seconds": 2.73
     },
@@ -104,28 +104,28 @@
       "name": "10_stop_flapping_and_coast_under_drag",
       "passed": true,
       "metrics": {
-        "initial_speed_mps": 0.19144471065412663,
-        "coasted_speed_mps": 0.0029641972363729846,
-        "settled_wing_force_N": 1.0391497194584216e-18
+        "initial_speed_mps": 0.18922855073316414,
+        "coasted_speed_mps": 0.002922752638546962,
+        "settled_wing_force_N": 9.98094479844704e-19
       },
-      "wall_seconds": 4.28
+      "wall_seconds": 4.26
     },
     {
       "name": "11_real_wing_joints_and_sweep_limits",
       "passed": true,
       "metrics": {
-        "min_angle_deg": -89.99999846477004,
-        "max_angle_deg": 9.124870086541822,
+        "min_angle_deg": -89.99999846477408,
+        "max_angle_deg": 8.447652084916008,
         "max_command_frequency_hz": 1.499999999999989
       },
-      "wall_seconds": 1.74
+      "wall_seconds": 1.73
     },
     {
       "name": "12_zero_fin_coefficient_has_no_hidden_thrust",
       "passed": true,
       "metrics": {
         "max_aerodynamic_force_N": 0.0,
-        "hinge_velocity_rad_s": -2.1506988362858723
+        "hinge_velocity_rad_s": -4.415337080835617
       },
       "wall_seconds": 1.74
     },
@@ -134,18 +134,18 @@
       "passed": true,
       "metrics": {
         "status": "gliding",
-        "wing_half_amplitude_deg": 2.98360834741358e-07
+        "wing_half_amplitude_deg": 3.074472749133882e-07
       },
-      "wall_seconds": 1.07
+      "wall_seconds": 1.06
     },
     {
       "name": "14_obstacle_guard_stops_wings",
       "passed": true,
       "metrics": {
-        "max_y_m": 0.49563628842544216,
+        "max_y_m": 0.49552751601896733,
         "final_state": "gliding_obstacle_stop"
       },
-      "wall_seconds": 3.73
+      "wall_seconds": 3.71
     }
   ],
   "limitations": [
