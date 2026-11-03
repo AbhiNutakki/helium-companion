@@ -31,5 +31,17 @@ physics server with only the browser dashboard.
 
 See the [project documentation](floating-companion/README.md) for controls,
 physics assumptions, limitations and testing instructions. Saved results include
-14 passing Gazebo integration checks. Run the test suite to check the current
-source, including command validation and HTTP behavior.
+14 passing Gazebo integration checks and 15 passing unit/HTTP tests.
+
+## Prototype experiments
+
+Compare wing settings in a separate simulation and save trajectories:
+
+```sh
+cd floating-companion
+.venv/bin/python scripts/experiment.py --frequencies .6 1.2 --coefficients 0 1.2 --repeats 2
+```
+
+See the [eight-case comparison](floating-companion/reports/experiments/wing-comparison/summary.json)
+for an example with repeated settings and zero-thrust controls. Coefficients
+remain assumptions that need physical measurement.

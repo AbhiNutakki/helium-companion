@@ -1,0 +1,130 @@
+{
+  "model_revision": "helium_flapping_v2",
+  "complete": true,
+  "source": {
+    "source_sha256": "41193cbd6e9e70f452cd0cff3638fe56c8c945c14eb70233fc892c347bb34832",
+    "git_commit": "cc760e95a1ea9fa0b2c6e0de5a5d8a8a05faad4e",
+    "source_worktree_modified": false
+  },
+  "note": "Simulation sensitivity study only; coefficients are assumptions, not hardware measurements.",
+  "configuration": {
+    "frequencies": [
+      0.6,
+      1.2
+    ],
+    "coefficients": [
+      0.0,
+      1.2
+    ],
+    "amplitude": 40,
+    "seconds": 6.0,
+    "repeats": 2,
+    "factor": 6
+  },
+  "cases": [
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.013999999999999,
+      "forward_travel_m": 0.0019288313526020229,
+      "altitude_change_m": -0.017003678754039075,
+      "mean_speed_mps": 0.0059119031462747055,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-001.csv"
+    },
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.039999999999999,
+      "forward_travel_m": 0.130514189991368,
+      "altitude_change_m": -0.011593619535811728,
+      "mean_speed_mps": 0.023006380675467043,
+      "mean_wing_force_N": 0.001103055247399597,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-002.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.041999999999998,
+      "forward_travel_m": 0.0020256757422114635,
+      "altitude_change_m": -0.020143154643176064,
+      "mean_speed_mps": 0.010587939027408332,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-003.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.122000000000003,
+      "forward_travel_m": 0.5342864287970905,
+      "altitude_change_m": 0.003271389521865453,
+      "mean_speed_mps": 0.08831666745956253,
+      "mean_wing_force_N": 0.004477418573538051,
+      "obstacle_stop_observed": false,
+      "repeat": 1,
+      "trace": "case-004.csv"
+    },
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.0419999999999945,
+      "forward_travel_m": 0.001796879039521082,
+      "altitude_change_m": -0.017777062695616408,
+      "mean_speed_mps": 0.005931896755916345,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 2,
+      "trace": "case-005.csv"
+    },
+    {
+      "frequency_hz": 0.6,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.0,
+      "forward_travel_m": 0.12930774770681186,
+      "altitude_change_m": -0.011749155718561166,
+      "mean_speed_mps": 0.022928357293036553,
+      "mean_wing_force_N": 0.0011375973570924515,
+      "obstacle_stop_observed": false,
+      "repeat": 2,
+      "trace": "case-006.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 0.0,
+      "elapsed_sim_s": 6.083999999999996,
+      "forward_travel_m": 0.0019475922486464903,
+      "altitude_change_m": -0.020385822070910553,
+      "mean_speed_mps": 0.010289890878214962,
+      "mean_wing_force_N": 0.0,
+      "obstacle_stop_observed": false,
+      "repeat": 2,
+      "trace": "case-007.csv"
+    },
+    {
+      "frequency_hz": 1.2,
+      "half_amplitude_deg": 40,
+      "assumed_thrust_coefficient": 1.2,
+      "elapsed_sim_s": 6.082000000000001,
+      "forward_travel_m": 0.529801663404794,
+      "altitude_change_m": 0.003197531064302206,
+      "mean_speed_mps": 0.0881003506278035,
+      "mean_wing_force_N": 0.00470453861209554,
+      "obstacle_stop_observed": false,
+      "repeat": 2,
+      "trace": "case-008.csv"
+    }
+  ]
+}

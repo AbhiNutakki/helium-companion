@@ -1,12 +1,20 @@
+test_accepted_command_reaches_bridge (test_http.HTTPTests.test_accepted_command_reaches_bridge) ... ok
+test_bad_requests_never_reach_bridge (test_http.HTTPTests.test_bad_requests_never_reach_bridge) ... ok
+test_foreign_origin_rejected (test_http.HTTPTests.test_foreign_origin_rejected) ... ok
+test_state_endpoint (test_http.HTTPTests.test_state_endpoint) ... ok
+test_accept_physical_limit_endpoints (test_model.ModelTests.test_accept_physical_limit_endpoints) ... ok
 test_assembly_mass_includes_every_link (test_model.ModelTests.test_assembly_mass_includes_every_link) ... ok
 test_no_tracking_entities_or_actuators (test_model.ModelTests.test_no_tracking_entities_or_actuators) ... ok
 test_only_two_wings_and_internal_slide (test_model.ModelTests.test_only_two_wings_and_internal_slide) ... ok
+test_reject_malformed_actions (test_model.ModelTests.test_reject_malformed_actions) ... ok
 test_reject_nonfinite (test_model.ModelTests.test_reject_nonfinite) ... ok
 test_reject_removed_propeller_controls (test_model.ModelTests.test_reject_removed_propeller_controls) ... ok
 test_reject_tracking_commands (test_model.ModelTests.test_reject_tracking_commands) ... ok
+test_reject_values_that_would_be_silently_clamped (test_model.ModelTests.test_reject_values_that_would_be_silently_clamped) ... ok
+test_require_command_targets (test_model.ModelTests.test_require_command_targets) ... ok
 test_wing_controls_are_accepted (test_model.ModelTests.test_wing_controls_are_accepted) ... ok
 
 ----------------------------------------------------------------------
-Ran 7 tests in 0.002s
+Ran 15 tests in 0.523s
 
 OK

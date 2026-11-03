@@ -137,6 +137,8 @@ obstacle stops can limit travel, so these are comparisons rather than estimates
 of steady-state speed. The checked-in `reports/experiments/baseline/` illustrates
 four cases, including a zero-thrust control. These results do not calibrate the
 physical wing or validate hardware performance.
+`reports/experiments/wing-comparison/` adds two repeats of each of those four
+settings, with source provenance and the individual CSV traces.
 
 ### Acceptance checks
 
