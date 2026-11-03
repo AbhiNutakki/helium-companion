@@ -12,9 +12,20 @@ FIELDS={
  'wings':{'left_hz','right_hz','left_amplitude','right_amplitude','nose_up_deg'},
  'ballast':{'position'},'push':{'fx','fy','fz','tx','ty','tz','duration'}}
 BOOLS={'enabled','buoyancy','safety'}
+REQUIRED={'mode':{'mode'},'goto':{'x','y'},'ballast':{'position'}}
+LIMITS={
+ 'left_hz':(0,1.5),'right_hz':(0,1.5),'left_amplitude':(0,50),'right_amplitude':(0,50),
+ 'nose_up_deg':(-25,25),'position':(-.11,.11),'throttle':(0,1),'turn':(-1,1),
+ 'thrust_coefficient':(0,3),'trim_grams':(-5,5),'wind_x':(-.5,.5),'wind_y':(-.5,.5),
+ 'speed':(.03,.3),'x':(-4,4),'y':(-3,3),'roll':(-.5,.5),'pitch':(-.5,.5),
+ 'yaw':(-math.pi,math.pi),'duration':(.02,1),
+ **{k:(-.2,.2) for k in ('fx','fy','fz')},
+ **{k:(-.015,.015) for k in ('tx','ty','tz')}}
 def validate(command):
-    if not isinstance(command,dict) or command.get('action') not in FIELDS:raise ValueError('unknown action')
+    if not isinstance(command,dict) or not isinstance(command.get('action'),str) or command['action'] not in FIELDS:raise ValueError('unknown action')
     action=command['action']
+    missing=REQUIRED.get(action,set())-command.keys()
+    if missing:raise ValueError('missing fields: '+', '.join(sorted(missing)))
     for key,value in command.items():
         if key=='action':continue
         if key not in FIELDS[action]:raise ValueError('unknown field: '+key)
@@ -23,6 +34,9 @@ def validate(command):
         elif key=='mode':
             if value not in ('float','swim','turn_left','turn_right','climb','descend','manual','off'):raise ValueError('unknown mode')
         elif isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):raise ValueError(key+' must be a finite number')
+        else:
+            bounds=(.4,2.9) if key=='z' and action=='goto' else (.3,3) if key=='z' else LIMITS.get(key)
+            if bounds and not bounds[0]<=value<=bounds[1]:raise ValueError(f'{key} must be between {bounds[0]} and {bounds[1]}')
     return command
 class Handler(BaseHTTPRequestHandler):
     def log_message(self,*args):pass
@@ -63,7 +77,7 @@ def launch(args):
         server_process=subprocess.Popen(['gz','sim','-r','-s',str(world)],env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         bridge=Bridge();http.bridge=bridge;threading.Thread(target=http.serve_forever,daemon=True).start()
         if args.gui:gui=subprocess.Popen(['gz','sim','-g'],env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
-        url=f'http://127.0.0.1:{args.port}';print(f'Companion Lab: {url}\nGazebo log: {logpath}\nCtrl+C to stop.',flush=True)
+        url=f'http://127.0.0.1:{args.port}';print(f'Helium Companion: {url}\nGazebo log: {logpath}\nCtrl+C to stop.',flush=True)
         if args.open:webbrowser.open(url)
         def stop(*_):raise KeyboardInterrupt
         signal.signal(signal.SIGTERM,stop)

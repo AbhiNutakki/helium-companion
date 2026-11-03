@@ -20,4 +20,16 @@ class ModelTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate({'action':'wings','left_hz':float('nan')})
     def test_wing_controls_are_accepted(self):
         self.assertEqual(validate({'action':'wings','left_hz':1,'right_hz':1})['left_hz'],1)
+    def test_reject_malformed_actions(self):
+        for action in ([],{},None,42):
+            with self.subTest(action=action),self.assertRaises(ValueError):validate({'action':action})
+    def test_require_command_targets(self):
+        for command in ({'action':'mode'},{'action':'goto','x':0},{'action':'ballast'}):
+            with self.subTest(command=command),self.assertRaises(ValueError):validate(command)
+    def test_reject_values_that_would_be_silently_clamped(self):
+        for action,key,value in (('wings','left_hz',2),('ballast','position',.2),('configure','trim_grams',6),('push','duration',0)):
+            with self.subTest(key=key),self.assertRaises(ValueError):validate({'action':action,key:value})
+    def test_accept_physical_limit_endpoints(self):
+        validate({'action':'wings','left_hz':0,'right_hz':1.5,'left_amplitude':0,'right_amplitude':50})
+        validate({'action':'goto','x':-4,'y':3,'z':2.9})
 if __name__=='__main__':unittest.main()
