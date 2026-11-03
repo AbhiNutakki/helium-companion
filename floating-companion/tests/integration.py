@@ -3,6 +3,8 @@
 import argparse,json,math,time,urllib.request,statistics,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
+from provenance import source_info
 class Lab:
     def __init__(self,url):self.url=url;self.results=[]
     def state(self):
@@ -34,7 +36,7 @@ class Lab:
             self.results.append(dict(name=name,passed=False,error=str(e),wall_seconds=round(time.monotonic()-start,2)));print('FAIL',name,str(e),flush=True)
     def finish(self):
         report={'model_revision':'helium_flapping_v2','generated_at':time.strftime('%Y-%m-%dT%H:%M:%S%z'),
-         'engine':'Gazebo Jetty / native articulated joints and rigid-body dynamics',
+         'engine':'Gazebo Jetty / native articulated joints and rigid-body dynamics','source':source_info(),
          'summary':{'passed':sum(r['passed'] for r in self.results),'total':len(self.results)},'checks':self.results,
          'limitations':['Fin thrust and drag coefficients are assumed, not measured.','Forward thrust is a rectified membrane approximation driven by measured hinge velocity.','No propellers, independent vertical force actuator, person, tracking target or camera pipeline.','Rigid envelope and wings; no aeroelastic CFD, sound or battery validation.']}
         (ROOT/'reports/results.json').write_text(json.dumps(report,indent=2)+'\n');return all(r['passed'] for r in self.results)

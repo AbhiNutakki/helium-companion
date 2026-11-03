@@ -3,6 +3,7 @@
 import argparse, csv, itertools, json, math, statistics, sys, time
 from pathlib import Path
 from session import ROOT, simulation
+from provenance import source_info
 sys.path.insert(0, str(ROOT/'tests'))
 from integration import Lab
 
@@ -50,7 +51,7 @@ def main():
         parser.error('factor must be positive and finite')
     # Refuse an existing directory to preserve earlier measurements.
     args.output.mkdir(parents=True, exist_ok=False)
-    report = {'model_revision': 'helium_flapping_v2', 'complete': False,
+    report = {'model_revision': 'helium_flapping_v2', 'complete': False, 'source': source_info(),
               'note': 'Simulation sensitivity study only; coefficients are assumptions, not hardware measurements.',
               'configuration': {k: v for k, v in vars(args).items() if k != 'output'}, 'cases': []}
     destination = args.output/'summary.json'

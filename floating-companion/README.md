@@ -144,8 +144,12 @@ physical wing or validate hardware performance.
 .venv/bin/python scripts/test_all.py
 ```
 
-This runs structural/API unit tests and the actual Gazebo acceptance suite in a
-separate partition on port 8875, then shuts down its processes. The suite checks
+This runs structural/API/HTTP unit tests first, then the actual Gazebo acceptance
+suite in a separate partition on an automatically selected loopback port. It
+shuts down its owned processes afterward and stops immediately if unit tests fail.
+Unit output is saved to `reports/unit-tests.txt`. Acceptance and experiment
+reports record a source fingerprint and Git revision to identify the tested code.
+The suite checks
 passive float, floor collision, trim mismatch, forward swimming, both turn
 signs, physical ballast pitching, climb, descent, glide, joint limits, zero fin
 coefficient, manual timeout and obstacle stopping. Results are written to
